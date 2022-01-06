@@ -189,7 +189,7 @@ function M.setup_autocmds()
         [[
             augroup snippy_local
             autocmd! * <buffer=%s>
-            autocmd TextChanged <buffer=%s> lua require 'snippy'._handle_TextChanged()
+            autocmd InsertLeave,TextChanged <buffer=%s> lua require 'snippy'._handle_TextChanged()
             autocmd TextChangedI <buffer=%s> lua require 'snippy'._handle_TextChangedI()
             autocmd TextChangedP <buffer=%s> lua require 'snippy'._handle_TextChangedP()
             autocmd CursorMoved,CursorMovedI,InsertEnter <buffer=%s> lua require 'snippy'._handle_CursorMoved()
