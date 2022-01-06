@@ -180,7 +180,7 @@ end
 -- Autocmd handlers
 
 function M._handle_TextChanged()
-    buf.clear_state()
+    -- buf.clear_state()
     buf.fix_current_stop()
     buf.update_state()
     -- M._check_position()
@@ -382,12 +382,10 @@ function M._check_position()
             (startrow < row or (startrow == row and startcol <= col))
             and (endrow > row or (endrow == row and endcol >= col))
         then
-            return buf.clear_state()
-        else
-            -- return
+            return
         end
     end
-    -- buf.clear_state()
+    buf.clear_state()
 end
 
 function M.parse_snippet(snippet)
