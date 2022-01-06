@@ -183,7 +183,6 @@ function M._handle_TextChanged()
     buf.fix_current_stop()
     buf.update_state()
     M._check_position()
-    buf.clear_state()
     M._mirror_stops()
 end
 
@@ -376,10 +375,11 @@ function M._check_position()
             (startrow < row or (startrow == row and startcol <= col))
             and (endrow > row or (endrow == row and endcol >= col))
         then
-            return
+        else
+            buf.clear_state()
         end
     end
-    buf.clear_state()
+    -- buf.clear_state()
 end
 
 function M.parse_snippet(snippet)
