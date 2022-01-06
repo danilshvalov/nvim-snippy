@@ -182,7 +182,8 @@ end
 function M._handle_TextChanged()
     buf.fix_current_stop()
     buf.update_state()
-    M._check_position()
+    -- M._check_position()
+    buf.clear_state()
     M._mirror_stops()
 end
 
