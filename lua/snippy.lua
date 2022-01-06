@@ -375,9 +375,9 @@ function M._check_position()
             (startrow < row or (startrow == row and startcol <= col))
             and (endrow > row or (endrow == row and endcol >= col))
         then
+            return buf.clear_state()
         else
-            buf.clear_state()
-            return
+            -- return
         end
     end
     -- buf.clear_state()
