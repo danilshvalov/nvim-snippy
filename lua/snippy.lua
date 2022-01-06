@@ -186,6 +186,12 @@ function M._handle_TextChanged()
     M._mirror_stops()
 end
 
+function M._handle_TextChangedI()
+    buf.fix_current_stop()
+    buf.update_state()
+    M._mirror_stops()
+end
+
 function M._handle_TextChangedP()
     buf.fix_current_stop()
 end
