@@ -377,6 +377,7 @@ function M._check_position()
         then
         else
             buf.clear_state()
+            return
         end
     end
     -- buf.clear_state()
