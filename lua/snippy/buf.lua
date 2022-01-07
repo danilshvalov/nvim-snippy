@@ -1,6 +1,6 @@
-local shared = require("snippy.shared")
+local shared = require('snippy.shared')
 
-local Stop = require("snippy.stop")
+local Stop = require('snippy.stop')
 
 local api = vim.api
 local cmd = vim.cmd
@@ -11,18 +11,18 @@ M._state = {}
 
 setmetatable(M, {
     __index = function(self, key)
-        if key == "current_stop" then
+        if key == 'current_stop' then
             return self.state().current_stop
-        elseif key == "stops" then
+        elseif key == 'stops' then
             return self.state().stops
         else
             return rawget(self, key)
         end
     end,
     __newindex = function(self, key, value)
-        if key == "current_stop" then
+        if key == 'current_stop' then
             self.state().current_stop = value
-        elseif key == "stops" then
+        elseif key == 'stops' then
             self.state().stops = value
         else
             return rawset(self, key, value)
@@ -48,7 +48,7 @@ local function get_parents(number)
         return {}
     end
     for n, stop in ipairs(M.state().stops) do
-        if stop.id == value.spec.parent and stop.spec.type == "placeholder" then
+        if stop.id == value.spec.parent and stop.spec.type == 'placeholder' then
             return vim.list_extend({ n }, get_parents(n))
         end
     end
@@ -93,7 +93,7 @@ function M.add_stop(spec, pos)
                 return false
             end
         end
-        return spec.type == "tabstop" or spec.type == "placeholder" or spec.type == "choice"
+        return spec.type == 'tabstop' or spec.type == 'placeholder' or spec.type == 'choice'
     end
     local startrow = spec.startpos[1] - 1
     local startcol = spec.startpos[2]

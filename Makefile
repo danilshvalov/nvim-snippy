@@ -35,7 +35,7 @@ functionaltest: neovim vim-snippets
 
 unittest:
 	VIMRUNTIME=$(PWD)/neovim/runtime/ \
-		VUSTED_NVIM=$(PWD)/neovim/build/bin/nvim \
+		VUSTED_NVIM=/opt/homebrew/bin/nvim \
 		vusted --shuffle test/unit
 
 test: functionaltest unittest
