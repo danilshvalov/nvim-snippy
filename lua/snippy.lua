@@ -180,14 +180,6 @@ end
 -- Autocmd handlers
 
 function M._handle_TextChanged()
-    -- buf.clear_state()
-    buf.fix_current_stop()
-    buf.update_state()
-    -- M._check_position()
-    M._mirror_stops()
-end
-
-function M._handle_TextChangedI()
     buf.fix_current_stop()
     buf.update_state()
     M._mirror_stops()

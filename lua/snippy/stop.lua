@@ -1,4 +1,4 @@
-local shared = require('snippy.shared')
+local shared = require("snippy.shared")
 
 local api = vim.api
 local fn = vim.fn
@@ -29,7 +29,7 @@ function Stop:get_text()
     local lines = api.nvim_buf_get_lines(0, startpos[1], endpos[1] + 1, false)
     lines[#lines] = lines[#lines]:sub(1, endpos[2])
     lines[1] = lines[1]:sub(startpos[2] + 1)
-    return table.concat(lines, '\n')
+    return table.concat(lines, "\n")
 end
 
 function Stop:set_text(text)
@@ -39,8 +39,8 @@ function Stop:set_text(text)
         local transform = self.spec.transform
         text = fn.substitute(text, transform.regex.raw, transform.format.raw, transform.flags)
     end
-    local lines = vim.split(text, '\n', true)
-    api.nvim_buf_set_text(0, startpos[1], startpos[2], endpos[1], endpos[2], lines)
+    local lines = vim.split(text, "\n", true)
+    api.nvim_buf_set_text(0, startpos[1], startpos[2], endpos[1], math.max(vim.fn.col("$") - 1, endpos[2]), lines)
 end
 
 function Stop:get_before()
