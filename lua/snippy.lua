@@ -359,7 +359,7 @@ function M._check_position()
     row = row - 1
     local ranges = {}
 
-    local max_row = vim.api.nvim_get_line_count(0) - 1
+    local max_row = vim.api.nvim_buf_line_count(0) - 1
     local max_col = fn.col("$") - 1
 
     for _, stop in ipairs(stops) do
