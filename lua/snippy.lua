@@ -182,8 +182,8 @@ end
 function M._handle_TextChanged()
     buf.fix_current_stop()
     buf.update_state()
-    M._mirror_stops()
     M._check_position()
+    M._mirror_stops()
 end
 
 function M._handle_TextChangedP()
@@ -358,6 +358,10 @@ function M._check_position()
     local row, col = unpack(api.nvim_win_get_cursor(0))
     row = row - 1
     local ranges = {}
+
+    local max_row = vim.api.nvim_get_line_count() - 1
+    local max_col = fn.col("$") - 1
+
     for _, stop in ipairs(stops) do
         local from, to = stop:get_range()
         table.insert(ranges, { from, to })
@@ -371,6 +375,11 @@ function M._check_position()
                 endcol = endcol - 1
             end
         end
+
+        if startrow > max_row or startcol > max_col or endrow > max_row or endcol > max_col then
+            return buf.clear_state()
+        end
+
         if
             (startrow < row or (startrow == row and startcol <= col))
             and (endrow > row or (endrow == row and endcol >= col))
