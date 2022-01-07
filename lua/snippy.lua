@@ -377,6 +377,7 @@ function M._check_position()
         end
 
         if startrow > max_row or startcol > max_col or endrow > max_row or endcol > max_col then
+            print(startrow, startcol, endrow, endcol, max_row, max_col)
             return buf.clear_state()
         end
 
