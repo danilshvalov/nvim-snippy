@@ -381,6 +381,8 @@ function M._check_position()
     buf.clear_state()
 end
 
+M.clear_state = buf.clear_state
+
 function M.parse_snippet(snippet)
     local ok, parsed, pos
     local text
