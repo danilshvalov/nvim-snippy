@@ -180,7 +180,7 @@ end
 -- Autocmd handlers
 
 function M._handle_TextChanged()
-    -- buf.fix_current_stop()
+    buf.fix_current_stop()
     buf.update_state()
     -- M._check_position()
     M._mirror_stops()
@@ -376,10 +376,10 @@ function M._check_position()
             end
         end
 
-        -- if startrow > max_row or startcol > max_col or endrow > max_row or endcol > max_col then
-        --     print(startrow, startcol, endrow, endcol, max_row, max_col)
-        --     return buf.clear_state()
-        -- end
+        if startrow > max_row or startcol > max_col or endrow > max_row or endcol > max_col then
+            print(startrow, startcol, endrow, endcol, max_row, max_col)
+            return buf.clear_state()
+        end
 
         if
             (startrow < row or (startrow == row and startcol <= col))
