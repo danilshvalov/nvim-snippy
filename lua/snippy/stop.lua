@@ -40,6 +40,7 @@ function Stop:set_text(text)
         text = fn.substitute(text, transform.regex.raw, transform.format.raw, transform.flags)
     end
     local lines = vim.split(text, "\n", true)
+    print(endpos[1], endpos[2])
     api.nvim_buf_set_text(0, startpos[1], startpos[2], endpos[1], math.min(vim.fn.col("$") - 1, endpos[2]), lines)
 end
 
