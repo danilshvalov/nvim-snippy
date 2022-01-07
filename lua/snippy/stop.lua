@@ -45,7 +45,7 @@ function Stop:set_text(text)
         0,
         startpos[1],
         startpos[2],
-        math.min(vim.api.nvim_buf_line_count(0), endpos[1]),
+        math.min(vim.api.nvim_buf_line_count(0) - 1, endpos[1]),
         math.min(vim.fn.col("$") - 1, endpos[2]),
         lines
     )
